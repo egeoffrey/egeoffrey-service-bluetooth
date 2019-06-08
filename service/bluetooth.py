@@ -15,11 +15,11 @@
 
 import re
 
-from sdk.module.service import Service
+from sdk.python.module.service import Service
 
-import sdk.utils.command
-import sdk.utils.numbers
-import sdk.utils.strings
+import sdk.python.utils.command
+import sdk.python.utils.numbers
+import sdk.python.utils.strings
 
 class Bluetooth(Service):
     # What to do when initializing
@@ -43,16 +43,16 @@ class Bluetooth(Service):
     # read a value from the device handle and return its hex
     def get_value(self, device, handle):
         # use char read
-        output = sdk.utils.command.run("gatttool -i "+self.config["adapter"]+" -b "+device+" -t random --char-read -a "+handle)
+        output = sdk.python.utils.command.run("gatttool -i "+self.config["adapter"]+" -b "+device+" -t random --char-read -a "+handle)
         # clean up the output
         return output.replace("Characteristic value/descriptor: ","")
 
     # read a value from the device notification handle and return its hex
     def get_notification(self, device, handle):
         # enable notification on the provided handle
-        output = sdk.utils.command.run(["gatttool","-i",self.config["adapter"], "-b", device, "-t", "random", "--char-write-req", "-a", handle,"-n", "0100", "--listen"], hell=False, timeout=self.notification_timeout)
+        output = sdk.python.utils.command.run(["gatttool","-i",self.config["adapter"], "-b", device, "-t", "random", "--char-write-req", "-a", handle,"-n", "0100", "--listen"], hell=False, timeout=self.notification_timeout)
         # disable notifications
-        sdk.utils.command.run("gatttool -i "+hci+" -b "+device+" -t random --char-write-req -a "+handle+" -n 0000")
+        sdk.python.utils.command.run("gatttool -i "+hci+" -b "+device+" -t random --char-write-req -a "+handle+" -n 0000")
         # find all the values
         values = re.findall("value: (.+)\n", output)
         # return the first match
@@ -87,8 +87,8 @@ class Bluetooth(Service):
                 self.cache.add(cache_key, data)
             # format the hex data into the expected format
             if format is not None:
-                if format == "number": data = sdk.utils.numbers.hex2int(data)
-                elif format == "string": sdk.utils.strings.hex2string(data)
+                if format == "number": data = sdk.python.utils.numbers.hex2int(data)
+                elif format == "string": sdk.python.utils.strings.hex2string(data)
             message.reply()
             message.set("value", data)
             # send the response back

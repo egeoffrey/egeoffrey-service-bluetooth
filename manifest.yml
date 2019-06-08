@@ -1,12 +1,7 @@
 package: myhouse-service-bluetooth
-revision: 1
+revision: 2
 version: development
 git: myhouse-project/myhouse-service-bluetooth
 modules:
   - service/bluetooth
   - service/bluetooth_discover
-default_config:
-  - service/bluetooth:
-      adapter: hci0
-  - service/bluetooth_discover:
-      adapter: hci0
