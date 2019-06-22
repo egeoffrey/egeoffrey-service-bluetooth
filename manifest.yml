@@ -2,7 +2,7 @@ package: myhouse-service-bluetooth
 revision: 3
 version: development
 github: myhouse-project/myhouse-service-bluetooth
-dockerhub: myhouse-project/myhouse-service-bluetooth
+dockerhub: myhouseproject/myhouse-service-bluetooth
 description: Retrieve values from a bluetooth/BLE device
 tags: service bluetooth
 container_config:
