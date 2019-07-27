@@ -1,5 +1,6 @@
+manifest_schema: 1
 package: myhouse-service-bluetooth
-revision: 3
+revision: 5
 version: development
 github: myhouse-project/myhouse-service-bluetooth
 dockerhub: myhouseproject/myhouse-service-bluetooth
@@ -8,5 +9,29 @@ tags: service bluetooth
 container_config:
   privileged: true
 modules:
-  - service/bluetooth
-  - service/bluetooth_discover
+  - service/bluetooth:
+      description: retrieve values from a bluetooth/BLE device
+      service_configuration: 
+        active:
+          - name: handle
+            description: Handle address
+            format: string
+            placeholder: '0x49'
+            required: true
+          - name: handle_type
+            description: Handle type
+            format: value|notification
+            required: true
+          - name: mac
+            description: The MAC address of the device
+            placeholder: 00:11:22:33:44
+            required: true
+            format: string
+          - name: format
+            description: Format of the data to return
+            required: false
+            format: number|string
+  - service/bluetooth_discover:
+      description: discover bluetooth/BLE devices in range
+      service_configuration: {}
+
