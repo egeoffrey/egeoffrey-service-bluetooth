@@ -1,37 +1,37 @@
-manifest_schema: 1
-package: myhouse-service-bluetooth
-revision: 5
-version: development
-github: myhouse-project/myhouse-service-bluetooth
-dockerhub: myhouseproject/myhouse-service-bluetooth
-description: Retrieve values from a bluetooth/BLE device
-tags: service bluetooth
+branch: development
 container_config:
   privileged: true
+description: Retrieve values from a bluetooth/BLE device
+dockerhub: myhouseproject/myhouse-service-bluetooth
+github: myhouse-project/myhouse-service-bluetooth
+manifest_schema: 2
 modules:
-  - service/bluetooth:
-      description: retrieve values from a bluetooth/BLE device
-      service_configuration: 
-        active:
-          - name: handle
-            description: Handle address
-            format: string
-            placeholder: '0x49'
-            required: true
-          - name: handle_type
-            description: Handle type
-            format: value|notification
-            required: true
-          - name: mac
-            description: The MAC address of the device
-            placeholder: 00:11:22:33:44
-            required: true
-            format: string
-          - name: format
-            description: Format of the data to return
-            required: false
-            format: number|string
-  - service/bluetooth_discover:
-      description: discover bluetooth/BLE devices in range
-      service_configuration: {}
-
+- service/bluetooth:
+    description: retrieve values from a bluetooth/BLE device
+    service_configuration:
+      active:
+      - description: Handle address
+        format: string
+        name: handle
+        placeholder: '0x49'
+        required: true
+      - description: Handle type
+        format: value|notification
+        name: handle_type
+        required: true
+      - description: The MAC address of the device
+        format: string
+        name: mac
+        placeholder: 00:11:22:33:44
+        required: true
+      - description: Format of the data to return
+        format: number|string
+        name: format
+        required: false
+- service/bluetooth_discover:
+    description: discover bluetooth/BLE devices in range
+    service_configuration: {}
+package: myhouse-service-bluetooth
+revision: 6
+tags: service bluetooth
+version: 1.0
