@@ -4,6 +4,7 @@ container_config:
 description: Retrieve values from a bluetooth/BLE device
 dockerhub: myhouseproject/myhouse-service-bluetooth
 github: myhouse-project/myhouse-service-bluetooth
+icon: wifi
 manifest_schema: 2
 modules:
 - service/bluetooth:
@@ -32,6 +33,6 @@ modules:
     description: discover bluetooth/BLE devices in range
     service_configuration: {}
 package: myhouse-service-bluetooth
-revision: 6
+revision: 7
 tags: service bluetooth
 version: 1.0
