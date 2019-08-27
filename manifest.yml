@@ -9,6 +9,12 @@ manifest_schema: 2
 modules:
 - service/bluetooth:
     description: retrieve values from a bluetooth/BLE device
+    module_configuration:
+    - description: The adapter the bluetooth device is attached to
+      format: string
+      name: adapter
+      placeholder: hci0
+      required: true
     service_configuration:
       active:
       - description: Handle address
@@ -31,8 +37,14 @@ modules:
         required: false
 - service/bluetooth_discover:
     description: discover bluetooth/BLE devices in range
+    module_configuration:
+    - description: The adapter the bluetooth device is attached to
+      format: string
+      name: adapter
+      placeholder: hci0
+      required: true
     service_configuration: {}
 package: egeoffrey-service-bluetooth
-revision: 8
+revision: 9
 tags: service bluetooth
 version: 1.0
