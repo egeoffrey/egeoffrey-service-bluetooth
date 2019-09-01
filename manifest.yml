@@ -16,7 +16,7 @@ modules:
       placeholder: hci0
       required: true
     service_configuration:
-      active:
+      pull:
       - description: Handle address
         format: string
         name: handle
@@ -45,6 +45,6 @@ modules:
       required: true
     service_configuration: {}
 package: egeoffrey-service-bluetooth
-revision: 10
+revision: 11
 tags: service bluetooth
 version: 1.0

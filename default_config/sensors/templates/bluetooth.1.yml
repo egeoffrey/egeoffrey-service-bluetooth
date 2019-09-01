@@ -9,7 +9,7 @@ service:
     handle: 0x50
     handle_type: value
     mac: 11:22:33:44:55
-  mode: active
+  mode: pull
   name: bluetooth
   schedule:
     minutes: 10
