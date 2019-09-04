@@ -35,7 +35,8 @@ class Bluetooth(Service):
     
     # What to do when running
     def on_start(self):
-        pass
+        self.log_info("Starting bluetooth...")
+        self.log_debug(sdk.python.utils.command.run("setup/start_bluetooth.sh"))
     
     # What to do when shutting down
     def on_stop(self):
